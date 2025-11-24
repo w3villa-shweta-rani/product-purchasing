@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Purchase</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Purchase</title>
 
-<body>
-  <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4 shadow" style="width: 28rem; border-radius: 20px;">
-      <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL._SL1500_.jpg" class="card-img-top" alt="Book Image">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-      <div class="card-body">
-        <h3 class="card-title text-center">The Alchemist</h3>
-        <p class="text-muted text-center">A best-selling inspirational novel by Paulo Coelho</p>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-        <h4 class="text-center mb-3">Price: ₹499</h4>
+  <body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="card p-4 shadow" style="width: 28rem; border-radius: 20px">
+        <img
+          src="https://m.media-amazon.com/images/I/71aFt4+OTOL._SL1500_.jpg"
+          class="card-img-top"
+          alt="Book Image"
+        />
 
-        <button id="checkoutBtn" class="btn btn-primary w-100">
-          Buy Now
-        </button>
+        <div class="card-body">
+          <h3 class="card-title text-center">The Alchemist</h3>
+          <p class="text-muted text-center">
+            A best-selling inspirational novel by Paulo Coelho
+          </p>
+
+          <h4 class="text-center mb-3">Price: ₹499</h4>
+
+          <button id="checkoutBtn" class="btn btn-primary w-100">
+            Buy Now
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    document.getElementById("checkoutBtn").addEventListener("click", () => {
-      fetch("http://localhost:3001/create-checkout-session", {
-        method: "POST",
-      })
-      .then(res => res.json())
-      .then(data => {
-        window.location.href = data.url;
+    <script>
+      document.getElementById("checkoutBtn").addEventListener("click", () => {
+        fetch("https://product-purchasing-2.onrender.com/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({})
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            window.location.href = data.url;
+          });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

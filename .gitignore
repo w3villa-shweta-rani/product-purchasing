@@ -1,0 +1,14 @@
+# Ignore server dependencies
+server/node_modules/
+
+# Ignore private env file
+server/.env
+.env
+
+
+# Ignore global node_modules if mistakenly created
+node_modules/
+
+# Ignore build folders (just in case)
+dist/
+build/

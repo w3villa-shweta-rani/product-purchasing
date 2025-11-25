@@ -22,12 +22,16 @@ app.post("/create-checkout-session", async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: "http://localhost:3000/success.html",
-      cancel_url: "http://localhost:3000/index.html",
+
+      // ✅ FIXED URL (8080)
+      success_url: "http://localhost:8080/success.html",
+      cancel_url: "http://localhost:8080/index.html",
     });
+
     res.json({ url: session.url });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
 app.listen(3001, () => console.log("Server running on port 3001"));
